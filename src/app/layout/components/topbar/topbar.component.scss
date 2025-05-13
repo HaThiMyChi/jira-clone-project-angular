@@ -1,0 +1,7 @@
+.topbar-container {
+    @apply h-topbar shadow-md flex flex-row px-4 justify-between;
+
+    .brand {
+        @apply flex flex-row items-center gap-1.5 mr-4;
+    }
+}

@@ -1,0 +1,18 @@
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
+
+@Component({
+  selector: 'app-sidebar-resizer',
+  templateUrl: './sidebar-resizer.component.html',
+  styleUrls: ['./sidebar-resizer.component.scss']
+})
+export class SidebarResizerComponent implements OnInit {
+  @Input() collapsed: boolean = true;
+  @Output() onToggleSidebar: EventEmitter<any> = new EventEmitter();
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

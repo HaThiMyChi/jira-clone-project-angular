@@ -6,14 +6,12 @@ import { AppComponent } from './app.component';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AvatarComponent } from './shared/components/avatar/avatar.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AvatarComponent,
   ],
   imports: [
     BrowserModule,

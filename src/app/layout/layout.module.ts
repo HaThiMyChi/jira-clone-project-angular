@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { components } from "./components";
 import { SvgIconModule } from "../shared/components/svg-icon/svg-icon.module";
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { AvatarModule } from "@app/shared/components/avatar/avatar.module";
 
 @NgModule({
     declarations: [
@@ -11,7 +13,9 @@ import { SvgIconModule } from "../shared/components/svg-icon/svg-icon.module";
     imports: [
         CommonModule,
         RouterModule,
-        SvgIconModule
+        SvgIconModule,
+        NzToolTipModule,
+        AvatarModule
     ]
 })
 

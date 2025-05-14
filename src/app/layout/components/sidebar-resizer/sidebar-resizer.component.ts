@@ -10,9 +10,18 @@ export class SidebarResizerComponent implements OnInit {
   @Input() collapsed: boolean = true;
   @Output() onToggleSidebar: EventEmitter<any> = new EventEmitter();
 
+  focused: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onToggle(): void {
+    this.onToggleSidebar.emit();
+  }
+
+  onHoverResizer(hovered: boolean): void {
+    this.focused = hovered;
+  }
 }

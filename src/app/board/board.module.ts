@@ -8,6 +8,8 @@ import { AvatarModule } from "@app/shared/components/avatar/avatar.module";
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { SvgIconModule } from '@app/shared/components/svg-icon/svg-icon.module';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { BoardColumnComponent } from './containers/board-column/board-column.component';
+import { BoardCardComponent } from './components/board-card/board-card.component';
 
 const routes: Routes = [
     {
@@ -20,6 +22,8 @@ const routes: Routes = [
     declarations: [
         containers,
         components,
+        BoardColumnComponent,
+        BoardCardComponent,
     ],
     imports: [
         CommonModule,

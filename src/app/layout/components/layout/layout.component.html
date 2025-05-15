@@ -1,12 +1,13 @@
-<div class=" w-sreen h-screen flex flex-col overflow-hidden">
-    <app-topbar class="z-10"></app-topbar>
+<div class="app-container">
+    <app-topbar></app-topbar>
 
-    <div class="w-screen h-full flex flex-row">
+    <div class="app-content">
         <app-sidebar></app-sidebar>
 
-        <div class="px-10 w-full">
+        <div class="main-content">
             <router-outlet></router-outlet>
         </div>
     </div>
+
 </div>
 <app-svg-definitors></app-svg-definitors>

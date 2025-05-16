@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
     {
       label: 'Board',
       icon: 'board',
-      link: '/board',
+      link: '/column',
     }, 
     {
       label: 'code',

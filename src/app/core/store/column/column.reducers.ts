@@ -4,7 +4,6 @@ import { immerOn } from 'ngrx-immer/store';
 
 import { Column } from "@app/core/interfaces";
 import * as actions from './column.actions';
-import { error } from "console";
 
 export interface ColumnState extends EntityState<Column> {
     loading: boolean;
@@ -38,4 +37,4 @@ const reducer = createReducer(
 
 export const columnReducer = (state: ColumnState | undefined, action: Action) => reducer(state, action);
 
-
+export const selectColumnState = createFeatureSelector<ColumnState>('columns');

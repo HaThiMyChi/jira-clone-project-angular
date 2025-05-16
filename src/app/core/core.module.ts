@@ -2,11 +2,19 @@ import { NgModule, Optional, SkipSelf } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { LayoutModule } from "../layout/layout.module";
+import { StoreModule } from "@ngrx/store";
+import { effects, metaReducers, reducers } from './store';
+import { EffectsModule } from "@ngrx/effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from "@app/env";
 
 @NgModule({
     declarations: [],
     imports: [
         CommonModule,
+        StoreModule.forRoot(reducers, {metaReducers}),
+        EffectsModule.forRoot(effects),
+        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
         HttpClientModule,
         LayoutModule
     ]

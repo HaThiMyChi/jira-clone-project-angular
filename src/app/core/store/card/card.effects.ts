@@ -3,7 +3,6 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as actions from './card.actions';
 import { BoardService } from "@app/core/services/board.service";
 import { catchError, map, mergeMap } from "rxjs/operators";
-import { error } from "console";
 import { of } from "rxjs";
 
 @Injectable()

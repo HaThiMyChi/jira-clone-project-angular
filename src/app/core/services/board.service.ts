@@ -19,7 +19,7 @@ export class BoardService {
     }
 
     getBoardCards(): Observable<Array<Card>> {
-        const apiUrl = `./assets/responses/cards,json`;
+        const apiUrl = `./assets/responses/cards.json`;
         return this.httpClient.get(apiUrl).pipe(
             map(r => r as Card[]),
             delay(1000)

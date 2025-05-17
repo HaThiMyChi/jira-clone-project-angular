@@ -13,7 +13,7 @@ export const logger = (reducer: any) => (state: any, action: any): any => {
 
 export * from './app.state';
 export * from './column';
-// export * from './card';
+export * from './card';
 
 export const metaReducers = environment.production ? [] : [logger];
 

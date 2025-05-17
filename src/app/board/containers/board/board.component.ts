@@ -19,7 +19,6 @@ export class BoardComponent implements OnInit {
     this.store.dispatch(fromStore.getColumns());
 
     this.columns$ = this.store.pipe(select(fromStore.allColumns));
-    console.log('columns ======1', this.columns$)
   }
 
 }

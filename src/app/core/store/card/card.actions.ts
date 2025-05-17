@@ -16,3 +16,18 @@ export const getCardsError = createAction(
     `${ACTION_PREFIX} get cards error`,
     props<{error: string}>()
 );
+
+export const updateCardColumn = createAction(
+    `${ACTION_PREFIX} Update card column`,
+    props<{cardId: string; columnId: string}>()
+);
+
+export const updateCardColumnSuccess = createAction(
+    `${ACTION_PREFIX} Update card column success`,
+     props<{cardId: string; columnId: string}>()
+);
+
+export const upateCardColumnError = createAction(
+    `${ACTION_PREFIX} Update card column error`,
+    props<{error: string}>()
+);

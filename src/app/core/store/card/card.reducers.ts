@@ -1,6 +1,6 @@
 import { Card } from "@app/core/interfaces";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { createReducer, Action, createFeatureSelector} from "@ngrx/store";
+import { createReducer, Action, createFeatureSelector, on} from "@ngrx/store";
 import { immerOn } from "ngrx-immer/store";
 import * as actions from './card.actions';
 
@@ -21,7 +21,7 @@ const reducer = createReducer(
     immerOn(actions.getCards, (state) => {
         state.loading = true;
     }),
-    immerOn(actions.getCardsSuccess, (state, {cards}) => 
+    on(actions.getCardsSuccess, (state, {cards}) => 
         cardAdapter.setAll(cards, {
             ...state,
             loading: false
@@ -31,6 +31,27 @@ const reducer = createReducer(
         state.loading = false;
         state.error = error
     }),
+
+    on(actions.updateCardColumn, (state, {columnId, cardId}) => {
+        const card = {...state.entities[cardId]};
+        return cardAdapter.updateOne({
+            id: cardId,
+            changes: {
+                ...card,
+                columnId,
+            }
+        }, {...state, loading: true});
+    }),
+
+    immerOn(actions.updateCardColumnSuccess, (state, {columnId, cardId}) => {
+        state.loading = false;
+    }),
+
+    immerOn(actions.upateCardColumnError, (state, {error}) => {
+        state.loading = false;
+        state.error =error;
+    }),
+
 );
 
 export const cardReducer = (state: CardState | undefined, action: Action) => reducer(state, action);

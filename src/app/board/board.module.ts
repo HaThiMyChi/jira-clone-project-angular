@@ -12,6 +12,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NzIconModule } from "ng-zorro-antd/icon";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { AutofocusModule } from "@app/shared/directives";
+import { ClickOutsideModule } from "@app/shared/directives";
+import { TextareaSubmitOnEnterModule } from "@app/shared/directives";
 
 const routes: Routes = [
     {
@@ -36,6 +39,9 @@ const routes: Routes = [
         ReactiveFormsModule,
         NzIconModule,
         NzDividerModule,
+        AutofocusModule,
+        ClickOutsideModule,
+        TextareaSubmitOnEnterModule
     ]
 })
 

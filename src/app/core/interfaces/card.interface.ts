@@ -1,12 +1,19 @@
 import { CardTypesEnum } from "../enums/card-types.enum";
 
 export interface Card {
-    id: string;
-    title: string;
-    type: CardTypesEnum;
-    columnId: string;
-    description: string;
-    createAt: string;
-    updatedAt: string;
-
+  id: string;
+  ordinalId: number;
+  title: string;
+  type: CardTypesEnum;
+  columnId: string;
+  priority: string;
+  assigneeId: string;
+  reporterId: string;
+  labels: Array<string>;
+  description: string;
+  environment: string;
+  startDate: string;
+  dueDate: string;
+  createdAt: string;
+  updatedAt: string;
 }

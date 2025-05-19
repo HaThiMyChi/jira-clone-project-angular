@@ -2,13 +2,17 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as actions from './card.actions';
 import { BoardService } from "@app/core/services/board.service";
-import { catchError, map, mergeMap } from "rxjs/operators";
+import { catchError, map, mergeMap, withLatestFrom } from "rxjs/operators";
 import { of } from "rxjs";
+import { select, Store } from "@ngrx/store";
+import { CardState } from "./card.reducers";
+import { selectLatestOrdinalId } from "./card.selectors";
 
 @Injectable()
 export class CardEffects {
     constructor(private actions$: Actions,
-        private boardService: BoardService
+        private boardService: BoardService,
+        private store: Store<CardState>
     ) {}
 
     getCard$ = createEffect(() => this.actions$.pipe(
@@ -21,4 +25,14 @@ export class CardEffects {
 
         )
     );
+
+    createCard$ = createEffect(() => this.actions$.pipe(
+        ofType(actions.createCard),
+        withLatestFrom(this.store.pipe(select(selectLatestOrdinalId))),
+        mergeMap(([{card}, ordinalId]) =>
+            this.boardService.createCard(card).pipe(
+                map(_ => actions.createCardSuccess({card: {...card, ordinalId: ordinalId + 1}})),
+                catchError((error) => of(actions.createCardError({error})))
+            ))
+    ))
 }

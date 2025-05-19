@@ -9,6 +9,7 @@ import { Card } from '@app/core/interfaces';
 })
 export class BoardCardComponent implements OnInit {
   @Input() card!: Card;
+  @Input() loading: boolean = false;
 
   CardTypes = CardTypesEnum;
   

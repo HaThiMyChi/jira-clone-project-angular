@@ -7,13 +7,15 @@ import * as actions from './card.actions';
 export interface CardState extends EntityState<Card> {
     loading: boolean;
     error: string; 
+    loadingCardIds: Array<string>;
 }
 
 export const cardAdapter: EntityAdapter<Card> = createEntityAdapter<Card>();
 
 const initialCardState: CardState = cardAdapter.getInitialState({
     loading: false,
-    error: ''
+    error: '',
+    loadingCardIds: []
 });
 
 const reducer = createReducer(
@@ -50,6 +52,19 @@ const reducer = createReducer(
     immerOn(actions.upateCardColumnError, (state, {error}) => {
         state.loading = false;
         state.error =error;
+    }),
+
+    on(actions.createCard, (state, {card}) => {
+        return cardAdapter.addOne(card, {...state, loadingCardIds: [...state.loadingCardIds, card.id]});
+    }),
+
+    on(actions.createCardSuccess, (state, {card}) => {
+        return cardAdapter.upsertOne(card, {...state, loadingCardIds: state.loadingCardIds.filter(id => id !== card.id)});
+    }),
+
+    immerOn(actions.createCardError, (state, {error}) => {
+        state.loading = false;
+        state.error = error;
     }),
 
 );

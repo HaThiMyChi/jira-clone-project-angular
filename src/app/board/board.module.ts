@@ -9,6 +9,9 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { SvgIconModule } from '@app/shared/components/svg-icon/svg-icon.module';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NzIconModule } from "ng-zorro-antd/icon";
+import { ReactiveFormsModule } from "@angular/forms";
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 const routes: Routes = [
     {
@@ -29,7 +32,10 @@ const routes: Routes = [
         SvgIconModule,
         NzBreadCrumbModule,
         NzSelectModule,
-        DragDropModule
+        DragDropModule,
+        ReactiveFormsModule,
+        NzIconModule,
+        NzDividerModule,
     ]
 })
 

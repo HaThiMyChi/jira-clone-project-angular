@@ -6,16 +6,18 @@ import * as actions from './card.actions';
 
 export interface CardState extends EntityState<Card> {
     loading: boolean;
-    error: string; 
+    error: string | null; 
     loadingCardIds: Array<string>;
+    selectedCardId: string | null;
 }
 
 export const cardAdapter: EntityAdapter<Card> = createEntityAdapter<Card>();
 
 const initialCardState: CardState = cardAdapter.getInitialState({
     loading: false,
-    error: '',
-    loadingCardIds: []
+    error: null,
+    loadingCardIds: [],
+    selectedCardId: null
 });
 
 const reducer = createReducer(
@@ -66,6 +68,10 @@ const reducer = createReducer(
         state.loading = false;
         state.error = error;
     }),
+
+    immerOn(actions.setSelectedCardId, (state, {id}) => {
+        state.selectedCardId = id;
+    })
 
 );
 

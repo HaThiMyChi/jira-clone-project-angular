@@ -17,6 +17,7 @@ import { ClickOutsideModule } from "@app/shared/directives";
 import { TextareaSubmitOnEnterModule } from "@app/shared/directives";
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { CardDetailsComponent } from './containers/card-details/card-details.component';
 
 const routes: Routes = [
     {
@@ -29,6 +30,7 @@ const routes: Routes = [
     declarations: [
         containers,
         components,
+        CardDetailsComponent,
     ],
     imports: [
         CommonModule,

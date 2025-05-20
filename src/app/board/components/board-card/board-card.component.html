@@ -1,4 +1,4 @@
-<div class="board-card" [ngClass]="{'opacity-50': loading}">
+<button class="board-card" [ngClass]="{'opacity-50': loading}" (click)="onCardClick()">
     <div class="flex flex-row justify-between">
         <div class="board-card-name">
             {{card.title}}
@@ -16,7 +16,7 @@
                 <app-svg-icon *ngSwitchCase="CardTypes.STORY" name="blueCheck" [width]="24" [height]="24"></app-svg-icon>
             </ng-container>
             
-            <div class="uppercase text-xs text-textDark" *ngIf="card.ordinalId">Demo - {{card.ordinalId}}</div>
+            <div class="uppercase text-xs text-textDark" *ngIf="card.ordinalId">{{enviroment.boardName}} - {{card.ordinalId}}</div>
 
             <app-svg-icon *ngIf="loading"
                 class="animate-spin"
@@ -25,4 +25,4 @@
         </div>
     </div>
     
-</div>
+</button>

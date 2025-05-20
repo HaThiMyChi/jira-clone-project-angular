@@ -15,6 +15,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { AutofocusModule } from "@app/shared/directives";
 import { ClickOutsideModule } from "@app/shared/directives";
 import { TextareaSubmitOnEnterModule } from "@app/shared/directives";
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 
 const routes: Routes = [
     {
@@ -41,7 +43,9 @@ const routes: Routes = [
         NzDividerModule,
         AutofocusModule,
         ClickOutsideModule,
-        TextareaSubmitOnEnterModule
+        TextareaSubmitOnEnterModule,
+        NzModalModule,
+        NzCollapseModule
     ]
 })
 

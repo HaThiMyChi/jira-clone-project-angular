@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import * as fromStore from '@app/core/store';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { nanoid } from 'nanoid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board-column',
@@ -18,7 +19,9 @@ export class BoardColumnComponent implements OnInit {
 
   loadingCardIds$!: Observable<Array<string>>;
 
-  constructor(private store: Store<fromStore.AppState>) { }
+  constructor(private store: Store<fromStore.AppState>,
+      private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadingCardIds$ = this.store.pipe(select(fromStore.selectLoadingCardIds));
@@ -42,6 +45,7 @@ export class BoardColumnComponent implements OnInit {
   }
 
   onCreateCard(card: Card): void {
+    console.log('on create card', card)
     const newCard: Card = {
       ...card,
       columnId: this.column.id,
@@ -49,6 +53,13 @@ export class BoardColumnComponent implements OnInit {
     };
 
     this.store.dispatch(fromStore.createCard({card: newCard}));
+  }
+
+  createComponentModal(id: string): void {
+    this.router.navigate(
+      ['/board'],
+      {queryParams: {selectedIssue: id}}
+    );
   }
 
 }

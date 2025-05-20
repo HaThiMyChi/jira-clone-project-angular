@@ -27,6 +27,10 @@ export class CreateCardFormComponent implements OnInit {
     }
   ];
 
+  get type() {
+    return this.createCardForm.get('type');
+  }
+
   constructor() { 
     this.createCardForm = new FormGroup({
       title: new FormControl('', [Validators.required]),

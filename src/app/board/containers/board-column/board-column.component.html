@@ -21,7 +21,8 @@
             cdkDrag
             [loading]="(loadingCardIds$ | async)?.includes(card.id) || false"
             [cdkDragData]="card.id"
-            [card]="card">
+            [card]="card"
+            (goToDetails)="createComponentModal($event)">
         </app-board-card>
     </div>
 

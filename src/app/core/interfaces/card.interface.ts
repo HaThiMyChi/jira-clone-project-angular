@@ -17,3 +17,12 @@ export interface Card {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface PartialCard {
+  id: string;
+  ordinalId?: number;
+  title?: string;
+  type?: CardTypesEnum;
+  columnId?: string;
+  description?: string;
+}

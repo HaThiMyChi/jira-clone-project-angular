@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { cardAdapter, selectedCardState} from "./card.reducers";
+import { cardAdapter, selectCardState} from "./card.reducers";
 
 const {
     selectIds: selectCardIds,
@@ -9,9 +9,14 @@ const {
 } = cardAdapter.getSelectors();
 
 export const allCards = createSelector(
-    selectedCardState,
+    selectCardState,
     selectAllCards,
 );
+
+export const allCardEntities = createSelector(
+    selectCardState,
+    selectCardEntities
+)
 
 export const selectCardsByColumnId = (columnId: string) => createSelector(
     allCards,
@@ -30,6 +35,23 @@ export const selectLatestOrdinalId = createSelector(
 );
 
 export const selectLoadingCardIds = createSelector(
-    selectedCardState,
+    selectCardState,
     state => state.loadingCardIds
 );
+
+export const selectSelectedCardId  = createSelector(
+   selectCardState,
+   state => state.selectedCardId
+);
+
+export const selectSelectedCard = createSelector(
+    allCardEntities,
+    selectSelectedCardId,
+    (entities, id) => {
+        if (entities && id) {
+            return entities[id];
+        }
+        return null;
+    }
+    
+)

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { Card, Column } from '@app/core/interfaces';
+import { Card, Column, PartialCard } from '@app/core/interfaces';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '@app/core/store';
@@ -37,9 +37,13 @@ export class BoardColumnComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      this.store.dispatch(fromStore.updateCardColumn({
-        cardId: event.item.data,
+      const partial: PartialCard = {
+        id: event.item.data,
         columnId: event.container.id
+      }
+
+      this.store.dispatch(fromStore.updateCard({
+        partial
       }));
     }
   }

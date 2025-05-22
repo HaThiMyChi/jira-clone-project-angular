@@ -49,7 +49,8 @@ export class BoardComponent implements OnInit {
       nzAutofocus: null,
       nzViewContainerRef: this.viewContainerRef,
       nzWidth: '85%',
-      nzFooter: null
+      nzFooter: null,
+      nzStyle: { top: '5%' }
     });
     modal.afterClose.subscribe(() => console.log('[afterOpen] emitted!'));
 

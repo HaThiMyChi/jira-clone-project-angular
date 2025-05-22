@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Card, Column, PartialCard } from '@app/core/interfaces';
+import { environment } from '@app/env';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromStore from '@app/core/store';
 
 @Component({
   selector: 'app-card-details',
@@ -6,26 +11,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-details.component.scss']
 })
 export class CardDetailsComponent implements OnInit {
-  columns = [
-    {
-      id: 'abc',
-      name: 'To do'
-    },
+  // columns = [
+  //   {
+  //     id: 'abc',
+  //     name: 'To do'
+  //   },
 
-    {
-      id: 'xyz',
-      name: 'In progress'
-    },
+  //   {
+  //     id: 'xyz',
+  //     name: 'In progress'
+  //   },
     
-    {
-      id: 'zua',
-      name: 'Done'
-    }
-  ];
+  //   {
+  //     id: 'zua',
+  //     name: 'Done'
+  //   }
+  // ];
 
-  constructor() { }
+  columns$!: Observable<Array<Column>>;
+
+  selectedCard$!: Observable<Card | undefined | null>;
+  environment = environment;
+
+  constructor(private store: Store<fromStore.AppState>) { }
 
   ngOnInit(): void {
+    this.selectedCard$ = this.store.pipe(select(fromStore.selectSelectedCard));
+    this.columns$ = this.store.pipe(select(fromStore.allColumns));
+  }
+
+  onUpdateCard(partial: PartialCard): void {
+    this.store.dispatch(fromStore.updateCard({partial}));
   }
 
 }

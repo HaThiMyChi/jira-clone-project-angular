@@ -18,6 +18,10 @@ import { TextareaSubmitOnEnterModule } from "@app/shared/directives";
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { CardDetailsComponent } from './containers/card-details/card-details.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { CardDetailsPanelComponent } from './containers/card-details-panel/card-details-panel.component';
+import { CardTitleComponent } from './components/card-title/card-title.component';
+import { InlineInputControlsModule } from "@app/shared/components/inline-input-controls/inline-input-controls.module";
 
 const routes: Routes = [
     {
@@ -31,6 +35,8 @@ const routes: Routes = [
         containers,
         components,
         CardDetailsComponent,
+        CardDetailsPanelComponent,
+        CardTitleComponent,
     ],
     imports: [
         CommonModule,
@@ -47,7 +53,9 @@ const routes: Routes = [
         ClickOutsideModule,
         TextareaSubmitOnEnterModule,
         NzModalModule,
-        NzCollapseModule
+        NzCollapseModule,
+        TextFieldModule,
+        InlineInputControlsModule
     ]
 })
 

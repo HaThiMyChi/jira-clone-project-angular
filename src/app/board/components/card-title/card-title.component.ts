@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,32 @@ export class CardTitleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const title = changes.title;
+    if (title.currentValue !== title.previousValue) {
+      this.titleControl.patchValue(this.title);
+    }
+  }
+
+  onSubmit(): void {
+    this.onUpdateTitle.emit({
+      id: this.cardId,
+      title: this.titleControl.value
+    });
+  }
+
+  onCancel(): void {
+    this.titleControl.patchValue(this.title);
+
+    this.onUpdateTitle.emit({
+      id: this.cardId,
+      title: this.title
+    });
+  }
+
+
 
 }

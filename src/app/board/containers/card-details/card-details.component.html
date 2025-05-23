@@ -37,7 +37,10 @@
   </div>
   <div class="card-details-modal-content">
     <div class="w-3/5 pr-6 mt-4">
-      <app-card-title>
+      <app-card-title 
+        [title]="card.title"
+        [cardId]="card.id"
+        (onUpdateTitle)="onUpdateCard($event)">
       </app-card-title>
       <div class="flex gap-2 mt-4">
         <button class="raise-button">

@@ -12,3 +12,14 @@ export const allUsers = createSelector(
   selectUserState,
   selectAllUsers,
 );
+
+export const selectUserById = (id: string | undefined) => createSelector(
+  allUsers,
+  users => {
+    if (!!users && !!id) {
+      return users.find(u => u.id === id);
+    }
+
+    return null;
+  }
+)

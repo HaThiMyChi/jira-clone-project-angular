@@ -41,10 +41,15 @@
         [nzShowArrow]="false"
         [nzHeader]="header"
         [nzActive]="true">
-        <div class="flex gap-4 flex-col">
+        <div class="flex gap-4 flex-col" *ngIf="card">
             <div class="detail-item">
                 <div class="title">Assignee</div>
-                <div>abc</div>
+                <app-card-assignee class="w-full"
+                    [users]="users$ | async"
+                    [cardId]="card.id"
+                    [assignee]="assignee$ | async"
+                    (updatedAssignee)="onUpdateCard($event)">
+                </app-card-assignee>
             </div>
 
             <div class="detail-item">

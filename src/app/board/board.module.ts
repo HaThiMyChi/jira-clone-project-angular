@@ -22,6 +22,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { CardDetailsPanelComponent } from './containers/card-details-panel/card-details-panel.component';
 import { CardTitleComponent } from './components/card-title/card-title.component';
 import { InlineInputControlsModule } from "@app/shared/components/inline-input-controls/inline-input-controls.module";
+import { CardAssigneeComponent } from './components/card-assignee/card-assignee.component';
 
 const routes: Routes = [
     {
@@ -37,6 +38,7 @@ const routes: Routes = [
         CardDetailsComponent,
         CardDetailsPanelComponent,
         CardTitleComponent,
+        CardAssigneeComponent,
     ],
     imports: [
         CommonModule,

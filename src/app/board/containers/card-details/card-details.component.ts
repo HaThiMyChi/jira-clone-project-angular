@@ -4,6 +4,7 @@ import { environment } from '@app/env';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '@app/core/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-details',
@@ -33,7 +34,9 @@ export class CardDetailsComponent implements OnInit {
   selectedCard$!: Observable<Card | undefined | null>;
   environment = environment;
 
-  constructor(private store: Store<fromStore.AppState>) { }
+  constructor(private store: Store<fromStore.AppState>,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.selectedCard$ = this.store.pipe(select(fromStore.selectSelectedCard));
@@ -43,6 +46,10 @@ export class CardDetailsComponent implements OnInit {
   onUpdateCard(partial: PartialCard): void {
     console.log('partial', partial)
     this.store.dispatch(fromStore.updateCard({partial}));
+  }
+
+  onCloseModal(): void {
+    this.router.navigate(['/board']);
   }
 
 }

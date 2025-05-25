@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from '@app/core/interfaces';
 
 @Component({
   selector: 'app-avatar',
@@ -8,6 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AvatarComponent implements OnInit {
   @Input() src: string =  '';
   @Input() tooltip: string = '';
+  @Input() size: number = 32;
+  @Input() user!: User | null;
 
   constructor() { }
 

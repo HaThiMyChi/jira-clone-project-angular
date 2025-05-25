@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from '@app/core/interfaces';
 
 @Component({
   selector: 'app-board-action',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board-action.component.scss']
 })
 export class BoardActionComponent implements OnInit {
-
+  @Input() users: Array<User> | null = [];
+  
   constructor() { }
 
   ngOnInit(): void {

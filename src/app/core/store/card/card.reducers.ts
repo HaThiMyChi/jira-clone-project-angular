@@ -9,6 +9,8 @@ export interface CardState extends EntityState<Card> {
     error: string | null; 
     loadingCardIds: Array<string>;
     selectedCardId: string | null;
+    labels: Array<string>;
+    labelLoading: boolean;
 }
 
 export const cardAdapter: EntityAdapter<Card> = createEntityAdapter<Card>();
@@ -17,7 +19,10 @@ const initialCardState: CardState = cardAdapter.getInitialState({
     loading: false,
     error: null,
     loadingCardIds: [],
-    selectedCardId: null
+    selectedCardId: null,
+    labels: [],
+    labelLoading: false
+
 });
 
 const reducer = createReducer(
@@ -71,7 +76,20 @@ const reducer = createReducer(
 
     immerOn(actions.setSelectedCardId, (state, {id}) => {
         state.selectedCardId = id;
-    })
+    }),
+
+    immerOn(actions.getLabels, state => {
+    state.labelLoading = true;
+    }),
+
+    immerOn(actions.getLabelsSuccess, (state, { labels }) => {
+        state.labelLoading = false;
+        state.labels = labels;
+    }),
+    immerOn(actions.getLabelsError, (state, { error }) => {
+        state.labelLoading = false;
+        state.error = error;
+    }),
 
 );
 

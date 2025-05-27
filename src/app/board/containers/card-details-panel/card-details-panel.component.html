@@ -17,8 +17,7 @@
                     {{c.name}}
                 </span>
             </div>
-        </nz-option>
-        
+        </nz-option>      
     </nz-select>
 
     <ng-template #renderTemplate> 
@@ -28,7 +27,7 @@
     </ng-template>
 
     <ng-template #defaultTemplate let-selected>
-        <div class="bg-transparent capitalize font-medium"></div>
+        <div class="bg-transparent capitalize font-medium">{{selected.nzLabel.toLowerCase()}}</div>
     </ng-template>
 
     <ng-template #customDropdownIcon>

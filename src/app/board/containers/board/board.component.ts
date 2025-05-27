@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { from, Observable } from 'rxjs';
 import * as fromStore from '@app/core/store';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { filter, map } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@app/shared/utils';
 import { CardDetailsComponent } from '../card-details/card-details.component';
@@ -16,6 +16,7 @@ import { CardDetailsComponent } from '../card-details/card-details.component';
 })
 export class BoardComponent implements OnInit {
   columns$!: Observable<Array<Column>>;
+  modalRef!: NzModalRef;
 
   constructor(
     private store: Store<fromStore.AppState>,
@@ -39,11 +40,20 @@ export class BoardComponent implements OnInit {
     ).subscribe((id) => {
       this.store.dispatch(fromStore.setSelectedCardId({id}));
       this.openCardDetailsModal();
-    })
+    });
+
+    this.activatedRoute.queryParams.pipe(
+      filter(params => !params?.selectedIssue),
+      takeUntilDestroyed(this)
+    ).subscribe((id) => {
+      if (this.modalRef) {
+        this.modalRef.close();
+      }
+    });
   }
 
   openCardDetailsModal(): void {
-    const modal = this.modal.create({
+    this.modalRef = this.modal.create({
       nzContent: CardDetailsComponent,
       nzClosable: false,
       nzAutofocus: null,
@@ -52,9 +62,9 @@ export class BoardComponent implements OnInit {
       nzFooter: null,
       nzStyle: { top: '5%' }
     });
-    modal.afterClose.subscribe(() => console.log('[afterOpen] emitted!'));
+    // modal.afterClose.subscribe(() => console.log('[afterOpen] emitted!'));
 
-    modal.afterClose.subscribe(_=> {
+    this.modalRef.afterClose.subscribe(_=> {
       this.router.navigate(['/board']);
       this.store.dispatch(fromStore.setSelectedCardId({id: null}));
     });

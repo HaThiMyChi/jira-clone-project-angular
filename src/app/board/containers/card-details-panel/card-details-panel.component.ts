@@ -35,6 +35,7 @@ export class CardDetailsPanelComponent implements OnInit, OnChanges {
     this.users$ = this.store.pipe(select(fromStore.allUsers));
 
     this.subscribeEvents();
+    this.listenControls();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -77,6 +78,20 @@ export class CardDetailsPanelComponent implements OnInit, OnChanges {
 
         this.assignee$ = this.store.pipe(select(fromStore.selectUserById(this.card?.assigneeId)));
         this.reporter$ = this.store.pipe(select(fromStore.selectUserById(this.card?.reporterId)));
+      })
+    ).subscribe();
+  }
+
+  private listenControls(): void {
+    this.columnControl.valueChanges.pipe(
+      filter(value => !!value),
+      takeUntilDestroyed(this),
+      tap(value => {
+        const partial: PartialCard = {
+          id: this.card?.id || '',
+          columnId:value
+        };
+        this.store.dispatch(fromStore.updateCard({partial}));
       })
     ).subscribe();
   }

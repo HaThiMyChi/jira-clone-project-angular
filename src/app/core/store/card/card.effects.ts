@@ -7,6 +7,7 @@ import { of } from "rxjs";
 import { select, Store } from "@ngrx/store";
 import { CardState } from "./card.reducers";
 import { selectLatestOrdinalId } from "./card.selectors";
+import { error } from "console";
 
 @Injectable()
 export class CardEffects {
@@ -34,5 +35,14 @@ export class CardEffects {
                 map(_ => actions.createCardSuccess({card: {...card, ordinalId: ordinalId + 1}})),
                 catchError((error) => of(actions.createCardError({error})))
             ))
-    ))
+    ));
+
+    getTags$ = createEffect(() => this.actions$.pipe(
+        ofType(actions.getLabels),
+        mergeMap(() => this.boardService.getTags()
+            .pipe(
+                map(tags => actions.getLabelsSuccess({labels: tags}),
+                catchError((error) => of(actions.getCardsError({error}))))
+            ))
+    ));
 }

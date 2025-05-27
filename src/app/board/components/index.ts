@@ -4,6 +4,8 @@ import { BoardCardComponent } from "./board-card/board-card.component";
 import { CreateCardFormComponent } from "./create-card-form/create-card-form.component";
 import { CardTitleComponent } from "./card-title/card-title.component";
 import { CardAssigneeComponent } from "./card-assignee/card-assignee.component";
+import { CardPriorityComponent } from "./card-priority/card-priority.component";
+import { CardLabelComponent } from "./card-label/card-label.component";
 
 export const components = [
     BoardActionComponent,
@@ -11,7 +13,9 @@ export const components = [
     BoardCardComponent, 
     CreateCardFormComponent,
     CardTitleComponent,
-    CardAssigneeComponent
+    CardAssigneeComponent,
+    CardPriorityComponent,
+    CardLabelComponent
 ];
 
 export {
@@ -20,5 +24,7 @@ export {
     BoardCardComponent,
     CreateCardFormComponent,
     CardTitleComponent,
-    CardAssigneeComponent
+    CardAssigneeComponent,
+    CardPriorityComponent,
+    CardLabelComponent
 };

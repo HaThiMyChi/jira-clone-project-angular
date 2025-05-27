@@ -59,7 +59,11 @@
 
             <div class="detail-item">
                 <div class="title">Priority</div>
-                <div>abc</div>
+                <app-card-priority class="w-full"
+                    [cardId]="card.id"
+                    [priority]="card.priority"
+                    (updatePriority)="onUpdateCard($event)">
+                </app-card-priority>
             </div>
 
             <div class="detail-item">

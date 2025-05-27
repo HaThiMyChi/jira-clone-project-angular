@@ -23,6 +23,9 @@ import { CardDetailsPanelComponent } from './containers/card-details-panel/card-
 import { CardTitleComponent } from './components/card-title/card-title.component';
 import { InlineInputControlsModule } from "@app/shared/components/inline-input-controls/inline-input-controls.module";
 import { CardAssigneeComponent } from './components/card-assignee/card-assignee.component';
+import { CardPriorityComponent } from './components/card-priority/card-priority.component';
+import { CardLabelComponent } from './components/card-label/card-label.component';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 const routes: Routes = [
     {
@@ -39,6 +42,8 @@ const routes: Routes = [
         CardDetailsPanelComponent,
         CardTitleComponent,
         CardAssigneeComponent,
+        CardPriorityComponent,
+        CardLabelComponent,
     ],
     imports: [
         CommonModule,
@@ -57,7 +62,8 @@ const routes: Routes = [
         NzModalModule,
         NzCollapseModule,
         TextFieldModule,
-        InlineInputControlsModule
+        InlineInputControlsModule,
+        NzToolTipModule
     ]
 })
 

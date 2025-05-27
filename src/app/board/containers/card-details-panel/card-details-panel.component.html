@@ -66,29 +66,24 @@
                 </app-card-priority>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item items-start">
                 <div class="title">Labels</div>
-                <div>abc</div>
-            </div>
-
-            <div class="detail-item">
-                <div class="title">Start date</div>
-                <div>abc</div>
-            </div>
-
-            <div class="detail-item">
-                <div class="title">Due date</div>
-                <div>abc</div>
-            </div>
-
-            <div class="detail-item">
-                <div class="title">Original estimate</div>
-                <div>abc</div>
+                <app-card-label class="w-full"
+                    [labels]="card.labels"
+                    [availableLabels]="labels$ | async"
+                    [cardId]="card.id"
+                    (updateLabels)="onUpdateCard($event)"
+                    ></app-card-label>
             </div>
 
             <div class="detail-item">
                 <div class="title">Reporter</div>
-                <div>abc</div>
+                <app-card-reporter class="w-full"
+                    [users]="users$ | async"
+                    [cardId]="card.id"
+                    [reporter]="reporter$ | async"
+                    (updateReporter)="onUpdateCard($event)">
+                </app-card-reporter>
             </div>
         </div>
     </nz-collapse-panel>

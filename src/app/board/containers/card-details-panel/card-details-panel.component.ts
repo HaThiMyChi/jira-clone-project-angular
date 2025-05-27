@@ -18,7 +18,7 @@ export class CardDetailsPanelComponent implements OnInit, OnChanges {
   users$!: Observable<Array<User>>;
   reporter$!: Observable<User | undefined | null>;
   assignee$!: Observable<User | undefined | null>;
-  label$!: Observable<Array<string>>;
+  labels$!: Observable<Array<string>>;
 
   card!: Card | undefined | null;
   columns!: Array<Column>;
@@ -76,6 +76,7 @@ export class CardDetailsPanelComponent implements OnInit, OnChanges {
         });
 
         this.assignee$ = this.store.pipe(select(fromStore.selectUserById(this.card?.assigneeId)));
+        this.reporter$ = this.store.pipe(select(fromStore.selectUserById(this.card?.reporterId)));
       })
     ).subscribe();
   }

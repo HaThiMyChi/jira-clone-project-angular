@@ -26,6 +26,7 @@ import { CardAssigneeComponent } from './components/card-assignee/card-assignee.
 import { CardPriorityComponent } from './components/card-priority/card-priority.component';
 import { CardLabelComponent } from './components/card-label/card-label.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { CardReporterComponent } from './components/card-reporter/card-reporter.component';
 
 const routes: Routes = [
     {
@@ -44,6 +45,7 @@ const routes: Routes = [
         CardAssigneeComponent,
         CardPriorityComponent,
         CardLabelComponent,
+        CardReporterComponent,
     ],
     imports: [
         CommonModule,

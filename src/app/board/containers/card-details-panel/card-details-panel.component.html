@@ -90,8 +90,8 @@
 
 <div class="flex justify-between items-center">
     <div class="mt-4 text-textGray text-xs flex flex-col gap-1">
-        <div>Created December 5, 2021, 2:01 PM</div>
-        <div>Updated 1 hour ago</div>
+        <div>Created {{card?.createdAt | date:'medium'}}</div>
+        <div>Updated {{card?.updatedAt | date: 'medium'}}</div>
     </div>
     <button class="square-button flex p-1 text-textDrak font-medium">
         <app-svg-icon name="config" [width]="24" [height]="24">Configure</app-svg-icon>

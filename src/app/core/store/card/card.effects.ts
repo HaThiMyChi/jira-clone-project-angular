@@ -7,7 +7,6 @@ import { of } from "rxjs";
 import { select, Store } from "@ngrx/store";
 import { CardState } from "./card.reducers";
 import { selectLatestOrdinalId } from "./card.selectors";
-import { error } from "console";
 
 @Injectable()
 export class CardEffects {

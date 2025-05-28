@@ -29,7 +29,8 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(fromStore.getCards());
     this.store.dispatch(fromStore.getColumns());
-    this.store.dispatch(fromStore.getUsers())
+    this.store.dispatch(fromStore.getUsers());
+    this.store.dispatch(fromStore.getLabels());
 
     this.columns$ = this.store.pipe(select(fromStore.allColumns));
 

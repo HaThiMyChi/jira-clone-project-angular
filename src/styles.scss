@@ -60,8 +60,28 @@
     padding: 0.5rem 0.625rem !important;
   }
 
-  .ant-collapse-content>.ant-collapse-content-box {
+  .ant-collapse-content > .ant-collapse-content-box {
     @apply px-4 py-1;
     border-radius: 0 0 0.25rem 0.25rem !important;
   }
+}
+
+.priority-control.ant-select {
+  @apply hover:bg-backgroundDark rounded-sm;
+  cursor: text !important;
+}
+
+.label-control {
+  @apply hover:bg-backgroundDark;
+
+  .ant-select-selection-item {
+  }
+
+  .anticon {
+    vertical-align: 0 !important;
+  }
+}
+
+.ant-select-item {
+  @apply border-l-2 border-transparent hover:border-primary;
 }

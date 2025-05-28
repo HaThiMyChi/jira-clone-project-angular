@@ -33,6 +33,8 @@ export class CardDetailsPanelComponent implements OnInit, OnChanges {
     this.selectedCard$ = this.store.pipe(select(fromStore.selectSelectedCard));
     this.columns$ = this.store.pipe(select(fromStore.allColumns));
     this.users$ = this.store.pipe(select(fromStore.allUsers));
+    this.labels$ = this.store.pipe(select(fromStore.allLabels));
+    console.log('this.labels$', this.labels$)
 
     this.subscribeEvents();
     this.listenControls();

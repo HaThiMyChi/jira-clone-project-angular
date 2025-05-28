@@ -27,6 +27,10 @@ import { CardPriorityComponent } from './components/card-priority/card-priority.
 import { CardLabelComponent } from './components/card-label/card-label.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { CardReporterComponent } from './components/card-reporter/card-reporter.component';
+import { CardDescriptionComponent } from './components/card-description/card-description.component';
+import { CardDescriptionsPanelComponent } from './containers/card-descriptions-panel/card-descriptions-panel.component';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { RichTextEditorModule } from '@app/shared/components/rich-text-editor/rich-text-editor.module';
 
 const routes: Routes = [
     {
@@ -39,13 +43,6 @@ const routes: Routes = [
     declarations: [
         containers,
         components,
-        CardDetailsComponent,
-        CardDetailsPanelComponent,
-        CardTitleComponent,
-        CardAssigneeComponent,
-        CardPriorityComponent,
-        CardLabelComponent,
-        CardReporterComponent,
     ],
     imports: [
         CommonModule,
@@ -65,7 +62,9 @@ const routes: Routes = [
         NzCollapseModule,
         TextFieldModule,
         InlineInputControlsModule,
-        NzToolTipModule
+        NzToolTipModule,
+        NzTagModule,
+        RichTextEditorModule
     ]
 })
 

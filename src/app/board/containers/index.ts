@@ -3,13 +3,15 @@ import { BoardContainerComponent } from "./board-container/board-container.compo
 import { BoardColumnComponent } from "./board-column/board-column.component";
 import { CardDetailsComponent } from "./card-details/card-details.component";
 import { CardDetailsPanelComponent } from "./card-details-panel/card-details-panel.component";
+import { CardDescriptionsPanelComponent } from "./card-descriptions-panel/card-descriptions-panel.component";
 
 export const containers = [
     BoardComponent,
     BoardContainerComponent,
     BoardColumnComponent,
     CardDetailsComponent,
-    CardDetailsPanelComponent
+    CardDetailsPanelComponent,
+    CardDescriptionsPanelComponent
 ];
 
 export {
@@ -17,5 +19,6 @@ export {
     BoardContainerComponent,
     BoardColumnComponent, 
     CardDetailsComponent,
-    CardDetailsPanelComponent
+    CardDetailsPanelComponent,
+    CardDescriptionsPanelComponent
 }

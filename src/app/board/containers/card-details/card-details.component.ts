@@ -43,11 +43,6 @@ export class CardDetailsComponent implements OnInit {
     this.columns$ = this.store.pipe(select(fromStore.allColumns));
   }
 
-  onUpdateCard(partial: PartialCard): void {
-    console.log('partial', partial)
-    this.store.dispatch(fromStore.updateCard({partial}));
-  }
-
   onCloseModal(): void {
     this.router.navigate(['/board']);
   }

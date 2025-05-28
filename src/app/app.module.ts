@@ -11,7 +11,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

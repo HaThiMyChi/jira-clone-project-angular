@@ -75,4 +75,8 @@ export class RichTextEditorComponent implements OnInit, ControlValueAccessor {
     this.blur.emit();
   }
 
+  editorCreated(editor: Quill): void {
+    editor.focus();
+  }
+
 }

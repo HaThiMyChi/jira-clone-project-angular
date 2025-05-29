@@ -19,6 +19,7 @@ export class CardDescriptionsPanelComponent implements OnInit {
   }
 
   onUpdateCard(partial: PartialCard): void {
+    console.log('partial', partial)
     this.store.dispatch(fromStore.updateCard({partial}));
   }
 

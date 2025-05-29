@@ -8,6 +8,7 @@ import { CardPriorityComponent } from "./card-priority/card-priority.component";
 import { CardLabelComponent } from "./card-label/card-label.component";
 import { CardReporterComponent } from "./card-reporter/card-reporter.component";
 import { CardDescriptionComponent } from "./card-description/card-description.component";
+import { CardEnvironmentComponent } from "./card-environment/card-environment.component";
 
 export const components = [
     BoardActionComponent,
@@ -19,7 +20,8 @@ export const components = [
     CardPriorityComponent,
     CardLabelComponent,
     CardReporterComponent,
-    CardDescriptionComponent
+    CardDescriptionComponent,
+    CardEnvironmentComponent
 ];
 
 export {
@@ -32,5 +34,6 @@ export {
     CardPriorityComponent,
     CardLabelComponent,
     CardReporterComponent,
-    CardDescriptionComponent
+    CardDescriptionComponent,
+    CardEnvironmentComponent
 };

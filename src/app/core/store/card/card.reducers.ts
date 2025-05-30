@@ -1,8 +1,9 @@
-import { Card } from "@app/core/interfaces";
+import { Card, Comment} from "@app/core/interfaces";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createReducer, Action, createFeatureSelector, on} from "@ngrx/store";
 import { immerOn } from "ngrx-immer/store";
 import * as actions from './card.actions';
+import { act } from "@ngrx/effects";
 
 export interface CardState extends EntityState<Card> {
     loading: boolean;
@@ -11,6 +12,8 @@ export interface CardState extends EntityState<Card> {
     selectedCardId: string | null;
     labels: Array<string>;
     labelLoading: boolean;
+    comments: Array<Comment>;
+    commentLoading: boolean;
 }
 
 export const cardAdapter: EntityAdapter<Card> = createEntityAdapter<Card>();
@@ -21,7 +24,10 @@ const initialCardState: CardState = cardAdapter.getInitialState({
     loadingCardIds: [],
     selectedCardId: null,
     labels: [],
-    labelLoading: false
+    labelLoading: false,
+    comments: [],
+    commentLoading: false
+
 
 });
 
@@ -90,6 +96,34 @@ const reducer = createReducer(
         state.labelLoading = false;
         state.error = error;
     }),
+
+    immerOn(actions.getCommnets, state => {
+        state.commentLoading = true;
+    }),
+
+    immerOn(actions.getCommentsSuccess, (state, { comments }) => {
+        state.commentLoading = false;
+        state.comments = comments;
+    }),
+
+    immerOn(actions.getCommentsError, (state, {error}) => {
+        state.commentLoading = false;
+        state.error = error;
+    }),
+
+    immerOn(actions.addComment, state => {
+        state.commentLoading = true;
+    }),
+
+    immerOn(actions.addCommentSuccess, (state, {comment}) => {
+        state.commentLoading = false;
+        state.comments.push(comment);
+    }),
+
+    immerOn(actions.addCommnetError, (state, {error}) => {
+        state.commentLoading = false;
+        state.error = error;
+    })
 
 );
 

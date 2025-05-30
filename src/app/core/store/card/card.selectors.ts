@@ -1,5 +1,6 @@
 import { createSelector } from "@ngrx/store";
 import { cardAdapter, selectCardState} from "./card.reducers";
+import { allUsers } from "../user";
 
 const {
     selectIds: selectCardIds,
@@ -59,4 +60,37 @@ export const selectSelectedCard = createSelector(
 export const allLabels = createSelector(
     selectCardState,
     state => state.labels
-)
+);
+
+export const allComments = createSelector(
+    selectCardState,
+    state => state.comments
+);
+
+export const selectSelectedCardComments = createSelector(
+    allComments,
+    selectSelectedCardId,
+    (comments, cardId) => {
+        if (!comments || !cardId) {
+            return [];
+        }
+        return comments.filter(c => c.cardId === cardId);
+    }
+);
+
+export const allCommentsWithUser = createSelector(
+    selectSelectedCardComments,
+    allUsers,
+    (comments, users) => {
+        if (!comments || !users) {
+            return [];
+        }
+
+        return comments.map(c => ({
+            ...c,
+            user: users.find(u => u.id === c.uid)
+        }));
+    }
+);
+
+

@@ -31,6 +31,7 @@ import { CardDescriptionComponent } from './components/card-description/card-des
 import { CardDescriptionsPanelComponent } from './containers/card-descriptions-panel/card-descriptions-panel.component';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { RichTextEditorModule } from '@app/shared/components/rich-text-editor/rich-text-editor.module';
+import { CardActivityComponent } from './containers/card-activity/card-activity.component';
 
 const routes: Routes = [
     {
@@ -43,6 +44,7 @@ const routes: Routes = [
     declarations: [
         containers,
         components,
+        CardActivityComponent,
     ],
     imports: [
         CommonModule,

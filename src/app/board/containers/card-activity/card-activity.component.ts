@@ -4,6 +4,9 @@ import { AddCommentModel, CommentWithUser, User } from '@app/core/interfaces';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore  from '@app/core/store';
+import { ActivityViewMode } from '@app/core/constants';
+import { takeUntilDestroyed } from '@app/shared/utils';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-card-activity',
@@ -15,15 +18,19 @@ export class CardActivityComponent implements OnInit {
   comments$!: Observable<Array<CommentWithUser>>;
 
   activityLabelControl: FormControl;
-
+  currentActivityTab: ActivityViewMode = 'comments';
 
   constructor(private store: Store<fromStore.AppState>) {
-    this.activityLabelControl = new FormControl('comments');
+    this.activityLabelControl = new FormControl(this.currentActivityTab);
    }
 
   ngOnInit(): void {
     this.comments$ = this.store.pipe(select(fromStore.allCommentsWithUser));
     this.currentUser$ = this.store.pipe(select(fromStore.selectCurrentUser));
+    this.activityLabelControl.valueChanges.pipe(
+      takeUntilDestroyed(this),
+      tap(value => (this.currentActivityTab = value))
+    ).subscribe();
   }
 
   onAddcomment(comment: AddCommentModel): void {

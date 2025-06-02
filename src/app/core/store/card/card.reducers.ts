@@ -97,7 +97,7 @@ const reducer = createReducer(
         state.error = error;
     }),
 
-    immerOn(actions.getCommnets, state => {
+    immerOn(actions.getComments, state => {
         state.commentLoading = true;
     }),
 

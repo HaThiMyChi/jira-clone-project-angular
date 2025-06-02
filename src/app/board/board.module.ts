@@ -17,21 +17,12 @@ import { ClickOutsideModule } from "@app/shared/directives";
 import { TextareaSubmitOnEnterModule } from "@app/shared/directives";
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
-import { CardDetailsComponent } from './containers/card-details/card-details.component';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { CardDetailsPanelComponent } from './containers/card-details-panel/card-details-panel.component';
-import { CardTitleComponent } from './components/card-title/card-title.component';
 import { InlineInputControlsModule } from "@app/shared/components/inline-input-controls/inline-input-controls.module";
-import { CardAssigneeComponent } from './components/card-assignee/card-assignee.component';
-import { CardPriorityComponent } from './components/card-priority/card-priority.component';
-import { CardLabelComponent } from './components/card-label/card-label.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { CardReporterComponent } from './components/card-reporter/card-reporter.component';
-import { CardDescriptionComponent } from './components/card-description/card-description.component';
-import { CardDescriptionsPanelComponent } from './containers/card-descriptions-panel/card-descriptions-panel.component';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { RichTextEditorModule } from '@app/shared/components/rich-text-editor/rich-text-editor.module';
-import { CardActivityComponent } from './containers/card-activity/card-activity.component';
+import { UnderConstructionModule } from "@app/shared/components/under-construction/under-construction.module";
 
 const routes: Routes = [
     {
@@ -44,7 +35,6 @@ const routes: Routes = [
     declarations: [
         containers,
         components,
-        CardActivityComponent,
     ],
     imports: [
         CommonModule,
@@ -66,7 +56,8 @@ const routes: Routes = [
         InlineInputControlsModule,
         NzToolTipModule,
         NzTagModule,
-        RichTextEditorModule
+        RichTextEditorModule,
+        UnderConstructionModule
     ]
 })
 

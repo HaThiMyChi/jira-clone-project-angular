@@ -2,12 +2,7 @@
 <div class="flex items-center justify-between">
     <div class="flex items-center">
         <div class="mr-4">Show:</div>
-        <div class="flex gap-2">
-            <button class="raise-button raise-button-sm font-medium text-textDark leading-5">All</button>
-            <button class="raise-button raise-button-sm font-medium text-textDark leading-5">Comment</button>
-            <button class="raise-button raise-button-sm font-medium text-textDark leading-5">History</button>
-            <button class="raise-button raise-button-sm font-medium text-textDark leading-5">Work log</button>
-        </div>
+       <app-card-activity-labels [formControl]="activityLabelControl"></app-card-activity-labels>
     </div>
 
     <button class="square-button flex items-center px-2 gap-1 font-medium text-textDark">
@@ -16,10 +11,12 @@
     </button>
 </div>
 
-<div class="activity-container">
-    <app-comment-list 
+<div class="activity-container" [ngSwitch]="true">
+    <app-comment-list *ngSwitchCase="currentActivityTab === 'comments'"
         [comments]="comments$ | async"
         [currentUser]="currentUser$ | async"
         (addComment)="onAddcomment($event)">
     </app-comment-list>
+
+    <app-under-construction *ngSwitchDefault></app-under-construction>
 </div>

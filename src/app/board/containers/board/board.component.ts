@@ -31,6 +31,7 @@ export class BoardComponent implements OnInit {
     this.store.dispatch(fromStore.getColumns());
     this.store.dispatch(fromStore.getUsers());
     this.store.dispatch(fromStore.getLabels());
+    this.store.dispatch(fromStore.getComments());
 
     this.columns$ = this.store.pipe(select(fromStore.allColumns));
 

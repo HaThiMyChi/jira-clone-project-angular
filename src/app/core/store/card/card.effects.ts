@@ -48,7 +48,7 @@ export class CardEffects {
     ));
 
     getComments$ = createEffect(() => this.actions$.pipe(
-        ofType(actions.getCommnets),
+        ofType(actions.getComments),
         mergeMap(_ => this.boardService.getComments()
             .pipe(
                 map(comments => actions.getCommentsSuccess({comments})),

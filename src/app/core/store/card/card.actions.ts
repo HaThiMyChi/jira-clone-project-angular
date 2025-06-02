@@ -66,7 +66,7 @@ export const getLabelsError = createAction(
   props<{ error: string }>()
 );
 
-export const getCommnets = createAction(
+export const getComments = createAction(
     `${ACTION_PREFIX} Get comments`,
 );
 

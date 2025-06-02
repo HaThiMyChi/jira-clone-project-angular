@@ -13,6 +13,8 @@ import { CommentListComponent } from "./comment-list/comment-list.component";
 import { CommentListItemComponent } from "./comment-list-item/comment-list-item.component";
 import { CardActivityLabelsComponent } from "./card-activity-labels/card-activity-labels.component";
 import { AddCommentFormComponent } from "./add-comment-form/add-comment-form.component";
+import { CardStartDateComponent } from "./card-start-date/card-start-date.component";
+import { CardDueDateComponent } from "./card-due-date/card-due-date.component";
 
 export const components = [
     BoardActionComponent,
@@ -29,7 +31,9 @@ export const components = [
     CommentListComponent,
     CommentListItemComponent,
     CardActivityLabelsComponent,
-    AddCommentFormComponent
+    AddCommentFormComponent,
+    CardStartDateComponent,
+    CardDueDateComponent    
 ];
 
 export {
@@ -47,5 +51,7 @@ export {
     CommentListComponent,
     CommentListItemComponent,
     CardActivityLabelsComponent,
-    AddCommentFormComponent
+    AddCommentFormComponent,
+    CardStartDateComponent,
+    CardDueDateComponent    
 };

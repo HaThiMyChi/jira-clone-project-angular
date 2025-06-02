@@ -87,3 +87,9 @@
 .ant-select-item {
   @apply border-l-2 border-transparent hover:border-primary;
 }
+
+.ant-picker {
+  &.start-date-picker, &.due-date-picker {
+    @apply w-full border-2 rounded hover:border-transparent hover:bg-backgroundDark focus:border-borderInputFocus border-transparent shadow-none;
+  }
+}

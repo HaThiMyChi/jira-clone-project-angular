@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { delay, map } from 'rxjs/operators';
 import { Observable, of } from "rxjs";
 
-import { Card, Column, Comment, User } from "@app/core/interfaces";
+import { Card, Column, Comment, PartialCard, User } from "@app/core/interfaces";
 
 @Injectable({providedIn: 'root'})
 
@@ -62,6 +62,12 @@ export class BoardService {
         return of({}).pipe(
             delay(1000)
         )
+    }
+
+    updateCard(card: PartialCard): Observable<unknown> {
+        return of({}).pipe(
+            delay(1000)
+        );
     }
 }
 

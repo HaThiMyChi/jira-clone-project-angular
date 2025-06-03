@@ -93,3 +93,17 @@
     @apply w-full border-2 rounded hover:border-transparent hover:bg-backgroundDark focus:border-borderInputFocus border-transparent shadow-none;
   }
 }
+
+.circle-icon-button {
+  @apply hover:text-primary hover:bg-blue-150 w-8 h-8 rounded-full p-1;
+}
+
+.card-context-menu, .column-context-menu, .board-context-menu, .card-details-context-menu {Add commentMore actions
+  .ant-popover-inner-content {
+    @apply px-0 py-1;
+  }
+
+  .ant-popover-arrow-content {
+    @apply invisible;
+  }
+}

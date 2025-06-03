@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board-heading.component.scss']
 })
 export class BoardHeadingComponent implements OnInit {
-
+  contextMenuVisible: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onContextMenuClick(): void {
+    this.contextMenuVisible = false;
   }
 
 }

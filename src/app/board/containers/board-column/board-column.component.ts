@@ -18,6 +18,7 @@ export class BoardColumnComponent implements OnInit {
   cards$!: Observable<Array<Card>>;
 
   loadingCardIds$!: Observable<Array<string>>;
+  contextMenuVisible: boolean = false;
 
   constructor(private store: Store<fromStore.AppState>,
       private router: Router
@@ -64,6 +65,10 @@ export class BoardColumnComponent implements OnInit {
       ['/board'],
       {queryParams: {selectedIssue: id}}
     );
+  }
+
+  onContextMenuClick(): void {
+    this.contextMenuVisible = false;
   }
 
 }

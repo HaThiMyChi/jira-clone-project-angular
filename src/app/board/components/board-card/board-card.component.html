@@ -3,7 +3,14 @@
         <div class="board-card-name">
             {{card.title}}
         </div>
-        <button class="square-button">
+        <button class="square-button" nz-popover
+            nzPopoverTrigger="click"
+            [ngClass]="{'focused': contextMenuVisible}"
+            nzPopoverOverlayClassName="card-context-menu"
+            nzPopoverPlacement="bottomRight"Add commentMore actions
+            [(nzPopoverVisible)]="contextMenuVisible"
+            [nzPopoverContent]="contextMenuTemplate"Add commentMore actions
+            (click)="$event.stopPropagation()">
             <app-svg-icon  name="threedot" [width]="32" [height]="24"></app-svg-icon>
         </button>
     </div>
@@ -15,23 +22,23 @@
     </ng-container>
 
     <div class="flex flex-row justify-between items-center w-full mt-4">
-        <div class="flex flex-row font-medium items-start">
+        <div class="flex flex-row font-medium items-start gap-1">
             <ng-container [ngSwitch]="card.type">
-                <app-svg-icon *ngSwitchCase="CardTypes.TASK" name="blueCheck" [width]="24" [height]="24"></app-svg-icon>
-                <app-svg-icon *ngSwitchCase="CardTypes.BUG" name="bug" [width]="24" [height]="24"></app-svg-icon>
-                <app-svg-icon *ngSwitchCase="CardTypes.STORY" name="story" [width]="24" [height]="24"></app-svg-icon>
+                <app-svg-icon *ngSwitchCase="CardTypes.TASK" name="blueCheck" [width]="16" [height]="16"></app-svg-icon>
+                <app-svg-icon *ngSwitchCase="CardTypes.BUG" name="bug" [width]="16" [height]="16"></app-svg-icon>
+                <app-svg-icon *ngSwitchCase="CardTypes.STORY" name="story" [width]="16" [height]="16"></app-svg-icon>
             </ng-container>
             
             <div class="uppercase text-xs text-textDark" *ngIf="card.ordinalId">{{enviroment.boardName}} - {{card.ordinalId}}</div>
         </div>
 
-        <app-svg-icon *ngIf="loading"
-            class="animate-spin"
-            name="circleIndicator"
-            fill="#fff">
-        </app-svg-icon>
-
         <div class="flex flex-row items-center gap-2">
+            <app-svg-icon *ngIf="loading"
+                class="animate-spin"
+                name="circleIndicator"
+                fill="#fff">
+            </app-svg-icon>
+
             <ng-container [ngSwitch]="card.priority">
                 <app-svg-icon *ngSwitchCase="CardPriority.LOWEST" name="priorityLowest" [height]="16" [width]="16" [nz-tooltip]="CardPriority.LOWEST" fill="#0065ff"></app-svg-icon>
                 <app-svg-icon *ngSwitchCase="CardPriority.LOW" name="priorityLow" [height]="16" [width]="16"  [nz-tooltip]="CardPriority.LOW" fill="#0065ff"></app-svg-icon>
@@ -46,3 +53,18 @@
         </div>
     </div>
 </button>
+
+<ng-template #contextMenuTemplate>
+    <div class="flex flex-col justify-start items-start w-36">
+        <div class="px-3 py-1 text-xs text-textGray uppercase">
+            Actions
+        </div>
+        <button (click)="onContextMenuClick()" class="w-full text-left px-3 py-1 hover:bg-backgroundDark">Add flag</button>
+        <button (click)="onContextMenuClick()" class="w-full text-left px-3 py-1 hover:bg-backgroundDark">Add label</button>
+        <button (click)="onContextMenuClick()" class="w-full text-left px-3 py-1 hover:bg-backgroundDark">Add parent</button>
+        <button (click)="onContextMenuClick()" class="w-full text-left px-3 py-1 hover:bg-backgroundDark">Copy issue link</button>
+        <button (click)="onContextMenuClick()" class="w-full text-left px-3 py-1 hover:bg-backgroundDark">Delete</button>
+        <div class="px-3 py-1 text-xs text-textGray uppercase">Move to</div>
+        <button (click)="onContextMenuClick()" class="w-full text-left px-3 py-1 hover:bg-backgroundDark">Bottom of column</button>
+    </div>
+</ng-template>

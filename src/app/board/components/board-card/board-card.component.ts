@@ -21,10 +21,10 @@ export class BoardCardComponent implements OnInit, OnChanges {
   enviroment = environment;
   CardPriority = CardPriorityEnum;
   assignee$!: Observable<User |null | undefined>;
-
+  contextMenuVisible: boolean = false;
   
   constructor(private store: Store<fromStore.AppState>) { }
-
+  
   ngOnInit(): void {
   }
 
@@ -38,6 +38,10 @@ export class BoardCardComponent implements OnInit, OnChanges {
     if (card && card.previousValue !== card.currentValue && this.card) {
       this.assignee$ = this.store.pipe(select(fromStore.selectUserById(this.card?.assigneeId)));
     }
+  }
+
+  onContextMenuClick(): void {
+    this.contextMenuVisible = false;
   }
 
 }

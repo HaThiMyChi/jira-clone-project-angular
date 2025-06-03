@@ -5,6 +5,7 @@ import { components } from "./components";
 import { SvgIconModule } from "../shared/components/svg-icon/svg-icon.module";
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { AvatarModule } from "@app/shared/components/avatar/avatar.module";
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { AvatarModule } from "@app/shared/components/avatar/avatar.module";
         RouterModule,
         SvgIconModule,
         NzToolTipModule,
-        AvatarModule
+        AvatarModule,
+        NzInputModule
     ]
 })
 

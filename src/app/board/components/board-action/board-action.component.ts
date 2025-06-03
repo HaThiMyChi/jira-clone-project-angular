@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { User } from '@app/core/interfaces';
 
 @Component({
@@ -8,8 +9,11 @@ import { User } from '@app/core/interfaces';
 })
 export class BoardActionComponent implements OnInit {
   @Input() users: Array<User> | null = [];
-  
-  constructor() { }
+  groupByControl: FormControl;
+
+  constructor() { 
+    this.groupByControl = new FormControl('None');
+  }
 
   ngOnInit(): void {
   }

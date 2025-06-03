@@ -11,6 +11,7 @@ export class AvatarComponent implements OnInit {
   @Input() tooltip: string = '';
   @Input() size: number = 32;
   @Input() user!: User | null;
+  @Input() bordered: boolean = false;
 
   constructor() { }
 

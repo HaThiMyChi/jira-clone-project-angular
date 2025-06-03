@@ -24,7 +24,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { RichTextEditorModule } from '@app/shared/components/rich-text-editor/rich-text-editor.module';
 import { UnderConstructionModule } from "@app/shared/components/under-construction/under-construction.module";
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 
 const routes: Routes = [
     {
@@ -60,7 +60,8 @@ const routes: Routes = [
         NzTagModule,
         RichTextEditorModule,
         UnderConstructionModule,
-        NzDatePickerModule
+        NzDatePickerModule,
+        NzPopoverModule
     ]
 })
 
